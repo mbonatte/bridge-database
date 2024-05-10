@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ bridge.general_info.bridge_name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3 {
+            color: #00457c;
+        }
+        .info-section {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            padding: 10px;
+            display: block;
+            margin: 10px auto;
+            border-radius: 8px;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="info-section">
+        <h1>{{ bridge.general_info.bridge_name }}</h1>
+    </div>
+    
+    <div class="info-section">
+        <h2>General info</h2>
+        <p>Located in: {{ bridge.general_info.city }}, {{ bridge.general_info.country }}</p>
+        <p>Year of construction: {{ bridge.general_info.year_of_construction }}</p>
+        <p>Length: {{ bridge.geometrical.total_length_m }} meters</p>
+        <p>Max Span: {{ bridge.geometrical.max_span_m }} meters</p>
+    </div>
+    
+    <div class="info-section">
+        <h3>Photos</h3>
+        {% for image_url in general_photos %}
+        <img src="{{ image_url }}">
+        {% endfor %}
+    </div>
+    
+    <div class="info-section">
+        <h2>Collapse Mechanism</h2>
+        <p>Affected Structure: {{ bridge.collapse_mechanism.affected_structure }}</p>
+        <p>Failure Mode: {{ bridge.collapse_mechanism.failure_mode }}</p>
+    </div>
+    
+    <div class="info-section">
+        <h3>Photos</h3>
+        {% for image_url in collapse_photos %}
+        <img src="{{ image_url }}">
+        {% endfor %}
+    </div>
+    
+    <div class="info-section">
+        <h2>Flood Characteristics</h2>
+        <p>Velocity: {{ bridge.flood_characteristics.velocity_m_s }} m/s</p>
+        <p>Height: {{ bridge.flood_characteristics.height_m }} meters</p>
+        <p>Duration: {{ bridge.flood_characteristics.duration_hours }} hours</p>
+        <p>Scouring Depth: {{ bridge.flood_characteristics.scouring_depth_m }} meters</p>
+    </div>
+</body>
+</html>
